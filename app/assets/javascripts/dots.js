@@ -38,7 +38,7 @@ $(document).ready(function() {
 				
 				// render 30 times a second (should also look 
 				// at requestAnimationFrame) 
-				setInterval(update,1500);  // 1000/30
+				setInterval(update,1000/30);  // 
 			
 			}
 			// the main update function, called 30 times a second
@@ -99,16 +99,21 @@ $(document).ready(function() {
 			
 			// moves all the particles dependent on mouse position
 			
-			function updateParticles() { 
+			function updateParticles(hexColour) { 
 				
 				// iterate through every particle
 				for(var i=0; i<particles.length; i++) {
-					
+					// hex = Math.floor( hex );
+					hex = Math.random() * 16777215;
 					particle = particles[i]; 
-					
 					// and move it forward dependent on the mouseY position. 
-					particle.position.z +=  mouseY * 0.1;
+					particle.material.color.r = ( hex >> 16 & 255 ) / 255;
+					particle.material.color.g = ( hex >> 8 & 255 ) / 255;
+					particle.material.color.b = ( hex & 255 ) / 255;
 					
+					particle.position.z +=  mouseY * 0.1;
+					// debugger;
+
 					// if the particle is too close move it to the back
 					if(particle.position.z>1000) particle.position.z-=2000; 
 		
