@@ -59,7 +59,7 @@ $(document).ready(function() {
 		
 					// we make a particle material and pass through the 
 					// colour and custom particle render function we defined. 
-					console.log(hexColour);
+					// console.log(hexColour);
 					var hex = 0xffffff; 
 
 					material = new THREE.ParticleCanvasMaterial( { color: hex , program: particleRender } );

@@ -26,8 +26,8 @@ var SoundCloudAudioSource = function(player) {
     	array = new Uint8Array(SoundCloud.analyser.frequencyBinCount);
 
     	// BYTE FREQUENCY ARRAY! EUREKA!
-        SoundCloud.analyser.getByteFrequencyData(array);
-        // console.log(array);
+        SoundCloud.analyser.getByteFrequencyData(array); 
+        console.log(array);
         //Using this to influence the size of the shape when the slider is changed in the control panel.
         boost = 0;
         for(var i = 0; i < array.length; i++){
