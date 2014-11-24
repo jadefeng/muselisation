@@ -111,7 +111,7 @@ $(document).ready(function() {
 					particle.material.color.g = ( hex >> 8 & 255 ) / 255;
 					particle.material.color.b = ( hex & 255 ) / 255;
 					
-					particle.position.z +=  mouseY * 0.1;
+					particle.position.z +=  ( mouseY * 0.1 + (boost ) );
 					// debugger;
 
 					// if the particle is too close move it to the back

@@ -7,8 +7,8 @@ This helped a lot: http://www.michaelbromley.co.uk/blog/42/audio-visualization-w
 
 var soundcloudOn;
 var SoundCloud = {};
-var array = []
-var boost; 
+var array = [];
+var boost = 0; 
 var hexColour,
     canvasElement,
     context;
@@ -152,8 +152,8 @@ var draw = function(audioSource) {
 	    var green = 255 - val ;
 	    var blue = val ; 
 	    var colours = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
-        hexColour = rgbToHex(red, green, blue);
-        console.log(hexColour);
+        // hexColour = rgbToHex(red, green, blue);
+        // console.log(hexColour);
 	    // console.log(colours);
 	    context.fillStyle = colours;
 	    // console.log(bin);
