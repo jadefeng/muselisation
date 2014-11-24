@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Muselisation</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+Test Canvas
+<canvas id="canvas" width="300" height="200"></canvas>
+<audio id="player"></audio>
+
+<%= yield %>
+
+</body>
+</html>
