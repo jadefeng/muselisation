@@ -1,10 +1,10 @@
-html, body {
+/*html, body {
     height: 100%;
     width: 100%;
     background: url('/assets/galaxy.jpg')
 }
 
-/*.dots {
+.dots {
 	background-color: black;
 	margin: 0px;
 	overflow: hidden;

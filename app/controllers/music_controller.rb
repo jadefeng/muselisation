@@ -5,7 +5,7 @@ class MusicController < ApplicationController
   def dots
   end
 
-  def circles
+  def kaleidoscope
   end
 
   def colour

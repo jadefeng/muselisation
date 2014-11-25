@@ -27,7 +27,7 @@ var SoundCloudAudioSource = function(player) {
 
     	// BYTE FREQUENCY ARRAY! EUREKA!
         SoundCloud.analyser.getByteFrequencyData(array); 
-        console.log(array);
+        // console.log(array);
         //Using this to influence the size of the shape when the slider is changed in the control panel.
         boost = 0;
         for(var i = 0; i < array.length; i++){
@@ -37,22 +37,25 @@ var SoundCloudAudioSource = function(player) {
         // console.log("arraylength: ",array.length)
         // console.log("size value: ", sizeValue)
         boost = (boost / array.length) //* (sizeValue * 2);
+
         // console.log("New boost: ", boost);
 
         if (SoundCloud.soundcloudOn === true) {
           requestAnimationFrame(sampleAudioStream);
         }
+        // Calls the kaleidoscope
+          // automatic with music
+          var kaleidoscope_music = function() {
+            move( ( boost * 2 ), (boost * 2) );
+          };
 
-        // ADDITIONAL TEST FROM BROMLEY
-        // SoundCloud.analyser.getByteFrequencyData(self.streamData);
-        // // calculate an overall volume value
-        // var total = 0;
-        // for (var i = 0; i < 80; i++) { // get the volume from the first 80 bins, else it gets too loud with treble
-        //     total += self.streamData[i];
-        // }
-        // self.volume = total;
-        // console.log(total)
+          var $image = $('.kaleidescope').find( '.image' );
 
+          function move( x, y ) {
+            $image.css( 'background-position', [ x + "px", y + "px" ].join( ' ' ) );
+          }
+
+          kaleidoscope_music();
     };
 
     requestAnimationFrame(sampleAudioStream)
