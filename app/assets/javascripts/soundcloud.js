@@ -33,12 +33,9 @@ var SoundCloudAudioSource = function(player) {
         for(var i = 0; i < array.length; i++){
             boost += array[i];
         }
-        // console.log("boost: ",boost);
-        // console.log("arraylength: ",array.length)
-        // console.log("size value: ", sizeValue)
+        
         boost = (boost / array.length) //* (sizeValue * 2);
 
-        // console.log("New boost: ", boost);
 
         if (SoundCloud.soundcloudOn === true) {
           requestAnimationFrame(sampleAudioStream);
@@ -46,19 +43,23 @@ var SoundCloudAudioSource = function(player) {
         // Calls the kaleidoscope
           // automatic with music
           var kaleidoscope_music = function() {
+            //console.log("going to move the tiles")
             move( ( boost * 2 ), (boost * 2) );
           };
 
-          var $image = $('.kaleidescope').find( '.image' );
 
           function move( x, y ) {
-            $image.css( 'background-position', [ x + "px", y + "px" ].join( ' ' ) );
+            if (x > 0 && y > 0) {
+                console.log(x, y)
+                $('.tile .image').css( 'background-position', [ ~~x + "px", ~~y + "px" ].join( ' ' ) );
+            }
+            // debugger;
           }
-
+          // console.log("gonna")
           kaleidoscope_music();
     };
 
-    requestAnimationFrame(sampleAudioStream)
+    requestAnimationFrame(sampleAudioStream);
     
     this.playStream = function(streamUrl) {
         // get the input stream from the audio element

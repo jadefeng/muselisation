@@ -163,7 +163,7 @@ $( document ).ready( function () {
   }
 
   // Timer to check for inactivity
-  (function timer() {
+  false && (function timer() {
       setTimeout( function() {
         timer();
         if( auto && !auto_throttle ) {
