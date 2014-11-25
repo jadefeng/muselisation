@@ -1,6 +1,4 @@
-
-$( document ).ready( function () {
-
+var createKaleidoscope = function(){ 
   var parameters = ( function ( src ) {
     var params = {}, qryStr = src.split( '?' )[ 1 ];
     if( qryStr ) {
@@ -99,42 +97,6 @@ $( document ).ready( function () {
   });
 
 
-  
-  // An alternate image can be supplied via Dragon Drop.
-  if ( 'draggable' in document.createElement('b') && window.FileReader ) {
-    k.ondragenter = k.ondragover = function( e ) {
-      e.preventDefault();
-    };
-  
-    k.ondrop = function( e ) {
-      readFile( e.dataTransfer.files[0] );
-      e.preventDefault();
-    };
-  }
-  
-  function readFile( file ) {
-    var r = new FileReader();
-    if ( !file.type.match('image\/.*') ) {
-      return false;
-    }
-    
-    r.onload = function( e ) {
-      $image.css( 'background-image', [ 'url(', e.target.result, ')' ].join( '' ) );
-    };
-    
-    r.readAsDataURL( file );
-  } 
-
-  // Request Fullscreen for maximum LSD effect
-  // $fullscreen.click( function() {
-  //   if ( document.fullscreenEnabled || document.mozFullScreenEnabled || 
-  //       document.webkitFullscreenEnabled ) {
-  //     if ( k.requestFullscreen )       k.requestFullscreen();
-  //     if ( k.mozRequestFullScreen )    k.mozRequestFullScreen();
-  //     if ( k.webkitRequestFullscreen ) k.webkitRequestFullscreen();
-  //   }
-  // });
-
   // Animate all the things!
   window.requestAnimFrame = ( function( window ) {
     var suffix = "equestAnimationFrame",
@@ -174,4 +136,5 @@ $( document ).ready( function () {
         }
       }, 5000 );
   })();
-});
+
+};

@@ -27,7 +27,7 @@ var SoundCloudAudioSource = function(player) {
 
     	// BYTE FREQUENCY ARRAY! EUREKA!
         SoundCloud.analyser.getByteFrequencyData(array); 
-        // console.log(array);
+
         //Using this to influence the size of the shape when the slider is changed in the control panel.
         boost = 0;
         for(var i = 0; i < array.length; i++){
@@ -41,21 +41,17 @@ var SoundCloudAudioSource = function(player) {
           requestAnimationFrame(sampleAudioStream);
         }
         // Calls the kaleidoscope
-          // automatic with music
           var kaleidoscope_music = function() {
             //console.log("going to move the tiles")
-            move( ( boost * 2 ), (boost * 2) );
+            move( ( boost * 5 ), (boost * 5) );
           };
-
 
           function move( x, y ) {
             if (x > 0 && y > 0) {
-                console.log(x, y)
                 $('.tile .image').css( 'background-position', [ ~~x + "px", ~~y + "px" ].join( ' ' ) );
             }
-            // debugger;
           }
-          // console.log("gonna")
+
           kaleidoscope_music();
     };
 
@@ -142,31 +138,6 @@ var SoundcloudLoader = function(player) {
     }
 };
 
-var draw = function(audioSource) {
-	// console.log(audioSource);
-	// console.log("Aray:", array.length )
-	// you can then access all the frequency and volume data
-	// and use it to draw whatever you like on your canvas
-	for(bin = 0; bin < array.length; bin ++) {
-		// console.log("found the length");
-	    // do something with each value. Here's a simple example
-	    var val = parseInt(boost);
-	    // console.log(val)
-	    var red = 255 - val ;
-	    var green = 255 - val ;
-	    var blue = val ; 
-	    var colours = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
-        // hexColour = rgbToHex(red, green, blue);
-        // console.log(hexColour);
-	    // console.log(colours);
-	    context.fillStyle = colours;
-	    // console.log(bin);
-	    context.fillRect(bin * 2, 0, 2, 200);
-	    // use lines and shapes to draw to the canvas is various ways. Use your imagination!
-	}
-	requestAnimationFrame(draw);
-};
-
 function rgbToHex(r, g, b) {
     // console.log("converting");
     return ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
@@ -174,21 +145,17 @@ function rgbToHex(r, g, b) {
 
 window.onload = function init() {
     // handle the form submit event to load the new URL
+
     form.addEventListener('submit', function(e) {
         var player =  document.getElementById('player');
         var loader = new SoundcloudLoader(player);
         var audioSource = new SoundCloudAudioSource(player);
         var loadAndUpdate = function(trackUrl){
 
-        // EXTRA - DRAW COLOURS!
-        canvasElement = document.getElementById('canvas');
-        context = canvasElement.getContext("2d");
-
         loader.loadStream(trackUrl,
             function(){
                 console.log("PLAYYYYY");
                 audioSource.playStream(loader.streamUrl());
-                draw(audioSource);
             });
         }        
 
@@ -197,4 +164,26 @@ window.onload = function init() {
         loadAndUpdate(trackUrl);
 
     });
+
+
+    var changeTheme = function() {
+        console.log("changing theme");
+        var theme = $('.visual').val();
+        $('.visualisation').empty();
+
+        if (theme == "galaxy") {
+            console.log("select galaxy");
+            createGalaxy();
+        } else {
+            console.log("select kaleidoscope");
+            $('.visualisation').html('<div class="kaleidoscope"></div>');
+            createKaleidoscope();
+        }
+    };
+
+    // If someone changes a theme 
+    changeTheme();
+    $('.visual').on('change', changeTheme);
+
+
 };

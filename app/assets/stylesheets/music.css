@@ -1,11 +1,11 @@
+
 html, body {
     height: 100%;
     width: 100%;
-    background: url('/assets/galaxy.jpg');
-    background-size: cover;
 }
 
-body{
+body {
+    background-color: black;
     font-family: 'Lato', sans-serif;
 }
 
@@ -17,10 +17,24 @@ h1{
     width: 100%;
     height: 100px;
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
+    text-align: center;
     z-index: 3;
     color: white;
     overflow: hidden;
     opacity: 0.8;
+}
+
+
+.themes {
+    position:absolute;
+    z-index: 5;
+    right: 0;
+    text-align: right;
+}
+
+#input {
+    width: 300px;
+    /*border-radius: 10%;*/
 }

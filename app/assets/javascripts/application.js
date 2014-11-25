@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require three.js
 //= require kaleidoscope.js
+//= require dots.js
 //= require soundcloud.js 
 //= require_tree .

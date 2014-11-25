@@ -1,5 +1,5 @@
 // Galaxy
-$(document).ready(function() {
+	var createGalaxy = function() {
 
 			// the main three.js components
 			var camera, scene, renderer,
@@ -30,7 +30,7 @@ $(document).ready(function() {
 				renderer.setSize( window.innerWidth, window.innerHeight );
 	
 				// the renderer's canvas domElement is added to the body
-				document.body.appendChild( renderer.domElement );
+				document.getElementsByClassName('visualisation')[0].appendChild( renderer.domElement );
 				makeParticles(); 
 			
 				// add the mouse move listener
@@ -129,6 +129,6 @@ $(document).ready(function() {
 			}
 
 		init();
-		
+
+	};
  
-});

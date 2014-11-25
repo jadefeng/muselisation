@@ -42,6 +42,8 @@ group :development do
 end
 
 gem 'rspec-rails', '~> 3.1.0' 
+
+gem 'font-awesome-rails'
 # Use unicorn as the app server
 # gem 'unicorn'
 
