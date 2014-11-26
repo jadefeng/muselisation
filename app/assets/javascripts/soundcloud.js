@@ -135,7 +135,7 @@ var SoundcloudLoader = function(player) {
                this.player.play();
             }
         }
-    }
+    };
 };
 
 function rgbToHex(r, g, b) {
@@ -173,7 +173,7 @@ window.onload = function init() {
         'http://thumbs.media.smithsonianmag.com//filer/Vincent-van-Gogh-The-Starry-Night-631.jpg__800x600_q85_crop.jpg'];
 
         var image_counter = 0;
-        
+
         var changing = function() {
             var image_source = 'url(' + imageArray[image_counter] + ')';
             $('.tile .image').css('background-image', image_source);
