@@ -166,6 +166,23 @@ window.onload = function init() {
     });
 
 
+    var changeImage = function() {
+        var imageArray = ['http://socialgalleryplugin.com/v3/wp-content/uploads/2013/09/crazy-desktop-backgrounds2.jpg',
+        'http://www.stlukesprimary.org.uk/wp-content/uploads/2014/09/Butterflies.jpg',
+        'http://media02.hongkiat.com/colorfulwp/Rainbow_Ocean__by_Thelma1.jpg',
+        'http://thumbs.media.smithsonianmag.com//filer/Vincent-van-Gogh-The-Starry-Night-631.jpg__800x600_q85_crop.jpg'];
+
+        var image_counter = 0;
+        
+        var changing = function() {
+            var image_source = 'url(' + imageArray[image_counter] + ')';
+            $('.tile .image').css('background-image', image_source);
+            image_counter++;
+            console.log("changed the image");   
+        };
+        setInterval(changing(), 2500);
+    };
+
     var changeTheme = function() {
         console.log("changing theme");
         var theme = $('.visual').val();
@@ -178,6 +195,8 @@ window.onload = function init() {
             console.log("select kaleidoscope");
             $('.visualisation').html('<div class="kaleidoscope"></div>');
             createKaleidoscope();
+            setInterval(changeImage(), 10000);
+            console.log("looped back again");
         }
     };
 
