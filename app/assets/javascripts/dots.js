@@ -29,7 +29,7 @@
 				renderer = new THREE.CanvasRenderer();
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				// renderer.setClearColor( 0x000000, 0 ); // the default
-				renderer.setClearColorHex( 0xffffff, 1 );
+				// renderer.setClearColorHex( 0xffffff, 1 );
 			 	renderer.setClearColor(0x000000, 1); 
 
 
