@@ -170,7 +170,7 @@ window.onload = function init() {
             });
         }
 
-        $('#submit').html('&#9612;&#9612')    
+        $('#submit').html('&#9632');    
 
         e.preventDefault();
         var trackUrl = document.getElementById('input').value;
