@@ -22,12 +22,19 @@
 				
 				// camera needs to go in the scene 
 				scene.add(camera);
-	
-				// and the CanvasRenderer figures out what the 
-				// stuff in the scene looks like and draws it!
-	 
-				renderer = new THREE.CanvasRenderer();
-				renderer.setSize( window.innerWidth, window.innerHeight );
+
+                 renderer = new THREE.CanvasRenderer(); 
+     
+
+
+				// renderer = new THREE.CanvasRenderer( {  } );
+				var canvasWidth = window.innerWidth; 
+				var canvasHeight = window.innerHeight;
+				renderer.setSize( canvasWidth, canvasHeight );
+
+				console.log("setting the background color")
+				// renderer.setClearColor( 0xffffff, 1);
+				renderer.setClearColor(0x000000, 1); 
 	
 				// the renderer's canvas domElement is added to the body
 				document.getElementsByClassName('visualisation')[0].appendChild( renderer.domElement );
@@ -36,9 +43,9 @@
 				// add the mouse move listener
 				document.addEventListener( 'mousemove', onMouseMove, false );
 				
-				// render 30 times a second (should also look 
+				// render 20 times a second (should also look 
 				// at requestAnimationFrame) 
-				setInterval(update,1000/30);  // 
+				setInterval(update,1000/20);  // 
 			
 			}
 			// the main update function, called 30 times a second

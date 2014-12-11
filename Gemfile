@@ -34,7 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development do
   gem 'pry-rails'
-  gem 'pry-debugger'
+  # gem 'pry-debugger'
   gem 'pry-stack_explorer'
 
   gem 'annotate'

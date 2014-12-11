@@ -5,7 +5,7 @@ html, body {
 }
 
 body {
-    background-color: black;
+    background-color: #000000;
     font-family: 'Lato', sans-serif;
 }
 
@@ -13,6 +13,7 @@ h1{
     color: white;
     text-shadow: 2px 2px black;
 }
+
 
 #playerControls {
     width: 100%;
@@ -33,9 +34,28 @@ h1{
     z-index: 5;
     right: 0;
     text-align: right;
+    right: 10px;
+    max-width: 300px;
 }
 
 #input {
     width: 300px;
-    /*border-radius: 10%;*/
+    border-radius: 5px;
+
+}
+
+button {
+    border-radius: 5px;
+    background-color: white;
+    text-shadow: 1px 1px gray;
+}
+
+.songName {
+    color: white;
+    text-shadow: 2px 1px black;
+}
+
+.message {
+    color: white;
+    text-shadow: 1px 1px black;
 }
