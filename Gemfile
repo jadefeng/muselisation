@@ -4,6 +4,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
 # Use postgresql as the database for Active Record
@@ -33,7 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development do
   gem 'pry-rails'
-  gem 'pry-debugger'
+  # gem 'pry-debugger'
   gem 'pry-stack_explorer'
 
   gem 'annotate'

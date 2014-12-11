@@ -43,7 +43,10 @@ var createKaleidoscope = function(){
   // PARAMETER: *src* is the URL for an alternate image.
   var src = parameters.src;
   if ( src ) {
+    console.log(parameters);
+    console.log($image)
     $image.css( 'background-image', [ 'url(', decodeURIComponent( src ), ')' ].join( '' ) );
+    console.log($image)
   }
 
   // PARAMETER: *clean* hides the Github and fullscreen links.

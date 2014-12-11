@@ -16,19 +16,22 @@
 		<option value="kaleidoscope">Kaleidoscope</option>
 		<option value="galaxy">Galaxy</option>
 	</select>
+	<div class="message"></div>
+	<div class="songName"></div>
 </div>
 
 <div class="visualisation"></div>
-
     <!-- Soundcloud input field -->
 	    <div id="playerControls">
+        	<div class="instructions">Enter a SoundCloud track or playlist URL.</div>
 	        <form id="form" class="form-group">
 	            <input id="input" class="form-control" placeholder="https://soundcloud.com/artist/track">
-	            <button type="submit" id="submit"> <i class="fa fa-play"></i> </button>
+	            <button type="submit" id="submit">  &#9658 </button>
 	          <br>
 	        </form>
 	        <audio id="player" controls autoplay preload autobuffer></audio>
 	   </div>
+
 
 	<script src="//connect.soundcloud.com/sdk.js"></script>
 

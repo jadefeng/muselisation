@@ -73,6 +73,7 @@ var SoundCloudAudioSource = function(player) {
 var SoundcloudLoader = function(player) {
     var self = this;
     var client_id = "0f51b1e1e15add18752bc0cb4522134a";
+    // var client_id = '289d197359d186013d88f63c56512004';
     this.sound = {};
     this.streamUrl = "";
     this.errorMessage = "";
@@ -87,7 +88,10 @@ var SoundcloudLoader = function(player) {
         SC.initialize({
             client_id: client_id
         });
+
+
         SC.get('/resolve', { url: track_url }, function(sound) {
+            var title, user
             if (sound.errors) {
                 self.errorMessage = "";
                 for (var i = 0; i < sound.errors.length; i++) {
@@ -102,12 +106,16 @@ var SoundcloudLoader = function(player) {
                     self.streamUrl = function(){
                         return sound.tracks[self.streamPlaylistIndex].stream_url + '?client_id=' + client_id;
                     }
+
+
                     successCallback();
                 }else{
                     self.sound = sound;
                     self.streamUrl = function(){ return sound.stream_url + '?client_id=' + client_id; };
                     successCallback();
                 }
+
+                $('.songName').html('<h4>' + sound.title + '</h4><h4>' + sound.user.username + '</h4>' )
             }
         });
     };
@@ -115,8 +123,10 @@ var SoundcloudLoader = function(player) {
     this.directStream = function(direction){
         if(direction=='toggle'){
             if (this.player.paused) {
+                
                 this.player.play();
             } else {
+                
                 this.player.pause();
             }
         }
@@ -147,6 +157,7 @@ window.onload = function init() {
     // handle the form submit event to load the new URL
 
     form.addEventListener('submit', function(e) {
+        var audioSource, loader, loadAndUpdate = null;
         var player =  document.getElementById('player');
         var loader = new SoundcloudLoader(player);
         var audioSource = new SoundCloudAudioSource(player);
@@ -157,7 +168,9 @@ window.onload = function init() {
                 console.log("PLAYYYYY");
                 audioSource.playStream(loader.streamUrl());
             });
-        }        
+        }
+
+        $('#submit').html('&#9612;&#9612')    
 
         e.preventDefault();
         var trackUrl = document.getElementById('input').value;
@@ -166,22 +179,6 @@ window.onload = function init() {
     });
 
 
-    var changeImage = function() {
-        var imageArray = ['http://socialgalleryplugin.com/v3/wp-content/uploads/2013/09/crazy-desktop-backgrounds2.jpg',
-        'http://www.stlukesprimary.org.uk/wp-content/uploads/2014/09/Butterflies.jpg',
-        'http://media02.hongkiat.com/colorfulwp/Rainbow_Ocean__by_Thelma1.jpg',
-        'http://thumbs.media.smithsonianmag.com//filer/Vincent-van-Gogh-The-Starry-Night-631.jpg__800x600_q85_crop.jpg'];
-
-        var image_counter = 0;
-
-        var changing = function() {
-            var image_source = 'url(' + imageArray[image_counter] + ')';
-            $('.tile .image').css('background-image', image_source);
-            image_counter++;
-            console.log("changed the image");   
-        };
-        setInterval(changing(), 2500);
-    };
 
     var changeTheme = function() {
         console.log("changing theme");
@@ -191,12 +188,12 @@ window.onload = function init() {
         if (theme == "galaxy") {
             console.log("select galaxy");
             createGalaxy();
+            $('.message').empty();
         } else {
             console.log("select kaleidoscope");
             $('.visualisation').html('<div class="kaleidoscope"></div>');
             createKaleidoscope();
-            setInterval(changeImage(), 10000);
-            console.log("looped back again");
+            $('.message').html("<p> You can pass parameters into the URL <br> <em>'?n=13&src=http://alternativeimage.png' </em></p>")
         }
     };
 
